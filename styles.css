@@ -1,0 +1,9 @@
+* {
+  background-color: purple;
+  color: white;
+}
+#main-div {
+  background-color: yellow;
+  width: 800px;
+  height: 800px;
+}
