@@ -1,61 +1,67 @@
-* {
-  background-color: white;
-  color: black;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  background-color: #114ca3;
 }
 
-.card1,
-.card2,
-.card3 {
-  width: 150px;
-  height: 200px;
+.game-board {
+  display: flex;
+  flex-wrap: wrap;
+  width: 450px;
+  gap: 15px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.card {
+  flex: 0 0 calc(33.333% - 10px);
+  aspect-ratio: 1 / 1;
   perspective: 1000px;
   cursor: pointer;
-  margin-left: 10px;
-  padding: 10px;
 }
 
-.card1-inner,
-.card2-inner,
-.card3-inner {
+.card-inner {
   position: relative;
   width: 100%;
   height: 100%;
+  text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Flip when card has 'flipped' class */
-.card1.flipped .card1-inner,
-.card2.flipped .card2-inner,
-.card3.flipped .card3-inner {
-  transform: rotateY(180deg);
-}
-
-.card1-front,
-.card1-back,
-.card2-front,
-.card2-back,
-.card3-front,
-.card3-back {
+.card-front,
+.card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
-  border-radius: 10px;
+  backface-visibility: hidden; /*This hides back side when flipped*/
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
-.card1-front,
-.card2-front,
-.card3-front {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+.card-front {
+  background-color: #6e468b;
+  color: white;
+  font-size: 2rem;
 }
 
-.card1-back,
-.card2-back,
-.card3-back {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+.card-back {
+  background-color: white;
   transform: rotateY(180deg);
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-back {
+  transform: rotateY(180deg); /*this is for flipping */
+  background-color: #f8f8f8;
 }
